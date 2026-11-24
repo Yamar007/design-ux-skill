@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maquettes : [écran ou fonctionnalité]</title>
+<!--
+  Page de départ pour montrer deux ou trois options de maquette côte à côte.
+  Un seul fichier, sans outil de construction : il s'ouvre dans un navigateur.
+
+  Comment l'utiliser :
+  1. Remplace les textes entre crochets.
+  2. Dans chaque .ecran, construis la maquette avec les vrais textes et des
+     données réalistes. Si le projet a une charte, recopie ses jetons dans
+     :root (couleurs, polices, rayons) au lieu de ceux-ci.
+  3. Garde une option recommandée (classe .recommandee) et dis pourquoi.
+  4. Supprime le cadre ordinateur si le produit ne vit que sur téléphone,
+     et inversement.
+
+  Règles maison : pas d'emojis (icônes SVG d'une même bibliothèque, par
+  exemple lucide.dev, licence ISC), pas de dégradés violets, aplats sobres.
+-->
+<style>
+  :root {
+    --fond: #f6f5f2;
+    --surface: #ffffff;
+    --encre: #1d1c1a;
+    --encre-douce: #5c5a55;
+    --filet: #dedbd4;
+    --accent: #1f6f5c;        /* couleur d'accent du projet : à remplacer */
+    --sur-accent: #ffffff;
+    --erreur: #b3261e;
+    --rayon: 10px;
+    --police: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="clair"]) {
+      --fond: #161614;
+      --surface: #201f1d;
+      --encre: #f1efe9;
+      --encre-douce: #b4b0a7;
+      --filet: #3a3834;
+      --accent: #5fbfa6;
+      --sur-accent: #0d1f1a;
+      --erreur: #f2938c;
+    }
+  }
+  :root[data-theme="sombre"] {
+    --fond: #161614;
+    --surface: #201f1d;
+    --encre: #f1efe9;
+    --encre-douce: #b4b0a7;
+    --filet: #3a3834;
+    --accent: #5fbfa6;
+    --sur-accent: #0d1f1a;
+    --erreur: #f2938c;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px 16px 64px;
+    background: var(--fond);
+    color: var(--encre);
+    font: 16px/1.5 var(--police);
+  }
+  header.page { max-width: 1200px; margin: 0 auto 32px; }
+  header.page h1 { font-size: 28px; line-height: 1.2; margin: 0 0 8px; }
+  header.page p { margin: 0; color: var(--encre-douce); max-width: 70ch; }
+  .bascule {
+    margin-top: 16px;
+    font: inherit;
+    padding: 8px 14px;
+    border: 1px solid var(--filet);
+    border-radius: var(--rayon);
+    background: var(--surface);
+    color: var(--encre);
+    cursor: pointer;
+  }
+
+  .options {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    align-items: start;
+  }
+  .option h2 { font-size: 20px; margin: 0 0 4px; }
+  .option .arbitrage { margin: 0 0 16px; color: var(--encre-douce); font-size: 15px; }
+  .option .arbitrage strong { color: var(--encre); font-weight: 600; }
+  .etiquette {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 2px 8px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .option:not(.recommandee) .etiquette { display: none; }
+
+  /* Cadres d'appareil : la maquette se voit à sa taille réelle */
+  .telephone {
+    width: 390px;
+    max-width: 100%;
+    min-height: 720px;
+    border: 1px solid var(--filet);
+    border-radius: 28px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .ordinateur {
+    margin-top: 24px;
+    width: 100%;
+    min-height: 480px;
+    border: 1px solid var(--filet);
+    border-radius: var(--rayon);
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .legende { margin: 8px 0 0; font-size: 13px; color: var(--encre-douce); }
+
+  /* Briques de maquette, à compléter selon le projet */
+  .ecran { padding: 20px; }
+  .ecran h3 { font-size: 22px; line-height: 1.25; margin: 8px 0 12px; }
+  .ecran p { margin: 0 0 12px; }
+  .ecran .douce { color: var(--encre-douce); }
+  .champ { display: block; margin-bottom: 16px; }
+  .champ span { display: block; font-weight: 600; margin-bottom: 6px; }
+  .champ input {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--encre);
+    background: var(--surface);
+    border: 1px solid var(--filet);
+    border-radius: var(--rayon);
+  }
+  .champ .aide { display: block; font-size: 14px; color: var(--encre-douce); margin-top: 4px; }
+  .champ.en-erreur input { border-color: var(--erreur); }
+  .champ.en-erreur .aide { color: var(--erreur); }
+  .bouton {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 16px;
+    font: inherit;
+    font-weight: 600;
+    border: 0;
+    border-radius: var(--rayon);
+    background: var(--accent);
+    color: var(--sur-accent);
+    cursor: pointer;
+  }
+  .bouton.secondaire {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    margin-top: 8px;
+  }
+  .gris { background: var(--filet); border-radius: 6px; height: 14px; margin: 8px 0; }
+
+  @media (max-width: 420px) {
+    .telephone { border-radius: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <h1>[Écran ou fonctionnalité] : [deux / trois] options</h1>
+  <p>[Pour qui, quelle tâche, ce qui change. Deux lignes au plus.]</p>
+  <p><strong>Ma recommandation :</strong> [option], parce que [raison en une phrase].</p>
+  <button class="bascule" type="button" onclick="basculer()">Voir en mode clair / sombre</button>
+</header>
+
+<main class="options">
+
+  <section class="option recommandee" aria-labelledby="option-a">
+    <span class="etiquette">Recommandée</span>
+    <h2 id="option-a">A. [Nom court]</h2>
+    <p class="arbitrage"><strong>Privilégie</strong> [ce qu'elle favorise]. <strong>Sacrifie</strong> [ce qu'elle laisse].</p>
+
+    <div class="telephone">
+      <div class="ecran">
+        <p class="douce">[Fil d'Ariane ou contexte]</p>
+        <h3>[Titre qui dit ce qu'on fait ici]</h3>
+        <p>[Texte réel, court.]</p>
+        <label class="champ">
+          <span>[Étiquette visible]</span>
+          <input type="text" value="[Donnée réaliste]">
+          <span class="aide">[Format attendu, avant l'erreur]</span>
+        </label>
+        <label class="champ en-erreur">
+          <span>[Étiquette]</span>
+          <input type="text" value="[Saisie erronée]">
+          <span class="aide">[Ce qui ne va pas et comment corriger]</span>
+        </label>
+        <button class="bouton" type="button">[Verbe d'action précis]</button>
+        <button class="bouton secondaire" type="button">[Action secondaire]</button>
+      </div>
+    </div>
+    <p class="legende">Téléphone, 390 pixels de large</p>
+
+    <div class="ordinateur">
+      <div class="ecran">
+        <h3>[Même écran, largeur ordinateur]</h3>
+        <div class="gris" style="width: 60%"></div>
+        <div class="gris" style="width: 40%"></div>
+      </div>
+    </div>
+    <p class="legende">Ordinateur</p>
+  </section>
+
+  <section class="option" aria-labelledby="option-b">
+    <span class="etiquette">Recommandée</span>
+    <h2 id="option-b">B. [Nom court]</h2>
+    <p class="arbitrage"><strong>Privilégie</strong> […]. <strong>Sacrifie</strong> […].</p>
+    <div class="telephone">
+      <div class="ecran">
+        <h3>[Titre]</h3>
+        <div class="gris" style="width: 80%"></div>
+        <div class="gris" style="width: 50%"></div>
+      </div>
+    </div>
+    <p class="legende">Téléphone, 390 pixels de large</p>
+  </section>
+
+  <section class="option" aria-labelledby="option-c">
+    <span class="etiquette">Recommandée</span>
+    <h2 id="option-c">C. [Nom court]</h2>
+    <p class="arbitrage"><strong>Privilégie</strong> […]. <strong>Sacrifie</strong> […].</p>
+    <div class="telephone">
+      <div class="ecran">
+        <h3>[Titre]</h3>
+        <div class="gris" style="width: 70%"></div>
+        <div class="gris" style="width: 30%"></div>
+      </div>
+    </div>
+    <p class="legende">Téléphone, 390 pixels de large</p>
+  </section>
+
+</main>
+
+<script>
+  // Bascule clair / sombre pour vérifier les deux thèmes
+  function basculer() {
+    const racine = document.documentElement
+    const sombre = racine.dataset.theme
+      ? racine.dataset.theme === 'sombre'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches
+    racine.dataset.theme = sombre ? 'clair' : 'sombre'
+  }
+</script>
+</body>
+</html>

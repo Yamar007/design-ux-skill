@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: checklist-outil-ligne-de-commande
+expected_outcome: |
+  La réponse est une liste de contrôle (usage 3) adaptée à un outil en ligne
+  de commande de sauvegarde : aide et exemples, erreurs utiles, codes de
+  sortie, sortie lisible par un script, couleurs désactivables, confirmation
+  et mode d'essai pour les actions destructrices, progression des tâches
+  longues, fonctionnement sans terminal interactif, pas d'emojis dans les
+  sorties. Elle ne déverse pas de points propres aux écrans tactiles ou au
+  web, et se présente en cases à cocher vérifiables par oui ou non.

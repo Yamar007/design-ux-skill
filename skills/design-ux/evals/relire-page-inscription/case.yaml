@@ -1,0 +1,14 @@
+schema_version: "1.1"
+name: relire-page-inscription
+expected_outcome: |
+  La réponse est une relecture (usage 2) : elle situe les utilisateurs et la
+  tâche, met en tête les trois problèmes qui comptent le plus pour
+  l'inscription, classe les remarques par gravité avec leur preuve dans le
+  fichier et une correction concrète. Elle relève notamment l'effacement du
+  formulaire à l'erreur avec un message vague, les champs sans étiquette
+  visible, le collage interdit dans le mot de passe, la case de partenaires
+  précochée, le téléphone obligatoire sans raison, les emojis et les
+  dégradés violets, le faible contraste, le lien de connexion fait d'un div.
+  Elle propose de maquetter les corrections visibles avant de les coder.
+context:
+  scaffold_script: place-files.sh

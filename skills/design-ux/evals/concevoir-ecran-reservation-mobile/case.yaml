@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: concevoir-ecran-reservation-mobile
+expected_outcome: |
+  La réponse traite la demande comme une conception (usage 1) à la taille
+  d'un nouvel écran : elle situe le client et sa tâche (persona et parcours
+  courts, hypothèses marquées comme telles), adapte au mobile (pouce, cibles
+  tactiles, conventions de plateforme), propose deux ou trois options de
+  maquette vraiment différentes avec de vrais textes et une recommandation,
+  et demande une validation avant tout code. Aucun emoji, aucun dégradé
+  violet, aucun code d'application.

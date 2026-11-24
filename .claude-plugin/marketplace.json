@@ -1,0 +1,17 @@
+{
+  "name": "design-ux",
+  "owner": {
+    "name": "Yamar007"
+  },
+  "metadata": {
+    "description": "Le skill design-ux pour Claude Code, à installer dans le projet de son choix ou dans tous."
+  },
+  "plugins": [
+    {
+      "name": "design-ux",
+      "source": "./",
+      "description": "Concevoir, relire et vérifier des interfaces avec la méthode du livret UX de L'École de design Nantes Atlantique.",
+      "version": "1.0.0"
+    }
+  ]
+}

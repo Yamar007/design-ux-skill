@@ -1,0 +1,10 @@
+{
+  "name": "design-ux",
+  "version": "1.0.0",
+  "description": "Méthode de design UX pour tout type de projet, d'après « L'UX Design, le livret des méthodes » de L'École de design Nantes Atlantique : concevoir (comprendre, personas, parcours, concepts, maquettes validées avant le code), relire une interface existante, et vérifier avec des listes de contrôle.",
+  "author": {
+    "name": "Yamar007"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "keywords": ["ux", "design", "ergonomie", "accessibilite", "maquettes", "audit"]
+}

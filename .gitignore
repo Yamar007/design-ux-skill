@@ -1,0 +1,7 @@
+# Résultats des tests du skill (claude plugin eval, skill-creator)
+skills/design-ux/evals/results/
+*-workspace/
+
+# Système
+.DS_Store
+Thumbs.db
